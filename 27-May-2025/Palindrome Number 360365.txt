@@ -1,0 +1,36 @@
+# Problem: Palindrome Number - https://leetcode.com/problems/palindrome-number/
+
+class Solution {
+    public boolean isPalindrome(int x) {
+        if (x<0) {
+            return false;
+        }
+        int num = x;
+        int count = 0;
+        while (num > 0) {
+            count++;
+            num/=10;
+        }
+
+        num = x;
+        int [] intArr = new int [count];
+        count = 0;
+        while(num > 0) {
+            intArr[count] = num%10;
+            num /= 10;
+            count++;
+        }
+
+        int left = 0;
+        int right = intArr.length-1;
+
+        while (left < right) {
+            if (intArr[left] != intArr[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
